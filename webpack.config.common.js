@@ -10,7 +10,9 @@ module.exports = () => {
   };
   const plugins = () => {
     return [
-      new HtmlWebpackPlugin({ template: path.resolve(__dirname, "public/index.html") }),
+      new HtmlWebpackPlugin({
+        template: path.resolve(__dirname, "public/index.html"),
+      }),
       new CopyPlugin({
         patterns: [
           // { from: "public", to: "dist" },
@@ -25,15 +27,23 @@ module.exports = () => {
   };
   return {
     context: path.resolve(__dirname, "src"),
-    entry: { main: "./index.js" },
+    entry: { main: "./index.tsx" },
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: `[name].[contenthash].bundle.js`,
       clean: true,
     },
+    resolve: {
+      extensions: [".tsx", ".ts", ".js", ".jsx"],
+    },
     plugins: plugins(),
     module: {
       rules: [
+        {
+          test: /\.[tj]sx?$/,
+          use: "ts-loader",
+          exclude: /node_modules/,
+        },
         {
           test: /\.css$/i,
           use: [MiniCssExtractPlugin.loader, "css-loader"],
