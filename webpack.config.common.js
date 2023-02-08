@@ -20,6 +20,18 @@ module.exports = () => {
             from: path.resolve(__dirname, "public", "favicon.png"),
             to: path.resolve(__dirname, dist),
           },
+          {
+            from: path.resolve(__dirname, "public", "images", "snow.jpg"),
+            to: path.resolve(__dirname, dist),
+          },
+          {
+            from: path.resolve(__dirname, "public", "images", "sunny-day.jpg"),
+            to: path.resolve(__dirname, dist),
+          },
+          {
+            from: path.resolve(__dirname, "public", "images", "water.jpg"),
+            to: path.resolve(__dirname, dist),
+          },
         ],
       }),
       new MiniCssExtractPlugin(),

@@ -1,0 +1,102 @@
+.volume-slider__body {
+    color: #fff;
+    border: 2px solid #ff00ff;
+    background-color: #ff00ff;
+}
+
+
+.thumb {
+    pointer-events: none;
+    position: absolute;
+    height: 0;
+    width: 100%;
+    outline: none;
+  
+    &,
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+  
+    &::-webkit-slider-thumb {
+      cursor: pointer;
+      height: 24px;
+      width: 24px;
+      margin-top: 4px;
+      pointer-events: all;
+      position: relative;
+
+      background-color: #ffffff;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.0510643), 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 3px 3px rgba(0, 0, 0, 0.05);
+      &:hover {
+        border: 2px solid #ffffff;
+      }
+    }
+  
+    &::-moz-range-thumb {
+      cursor: pointer;
+      height: 24px;
+      width: 24px;
+      margin-top: 4px;
+      pointer-events: all;
+      position: relative;
+      background-color: #ffffff;
+      border: 2px solid #ffffff;
+      border-radius: 50%;
+      box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.0510643), 0px 2px 2px rgba(0, 0, 0, 0.1), 0px 3px 3px rgba(0, 0, 0, 0.05);
+      &:hover {
+        border: 2px solid #ffffff;
+      }
+    }
+  
+    &__left {
+      z-index: 10;
+    }
+  
+    &__right {
+      z-index: 10;
+    }
+  }
+
+.double-range-slider {
+    display: flex;
+    width: 10%;
+    height: 14px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  
+    .slider {
+      // position: relative;
+      width: 100%;
+      &__track,
+      &__range {
+        position: absolute;
+        border-radius: 19px;
+        height: 8px;
+      }
+  
+      &__track {
+        background-color: transparent;
+        border: 2px solid #fff;
+        display: flex;
+        z-index: 1;
+        width: 100%;
+        height: 14px;
+      }
+  
+      &__range {
+        background-color: #fff;
+        border-radius: 10 0;
+        z-index: 2;
+        height: 14px;
+      }
+    }
+}
+
+.double-range-slider__range {
+    margin-bottom: 20px;
+  }

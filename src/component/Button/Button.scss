@@ -1,0 +1,29 @@
+.button__container {
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    background-size: contain;
+
+
+    &:not(:last-child) {
+        margin-right: 90px
+    }
+
+    // &:hover {
+    //     border: 4px solid #FFFFFF;
+    //     border-radius: 10px;
+    // }
+
+    .button__img {
+        background-size: contain;
+        width: 200px;
+        height: 200px;
+        border-radius: 10px;
+        background: rgba(0, 0, 0, 0.35);
+
+        &:hover {
+            border: 4px solid #FFFFFF;
+            border-radius: 10px;
+        }
+    }
+}

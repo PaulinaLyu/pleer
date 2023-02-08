@@ -13,25 +13,18 @@ body {
   font-family: "Roboto", sans-serif;
   max-width: 960px;
   margin: 1rem auto;
+  color: #fff;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 1rem;
+  margin-bottom: 5rem;
+  font-size: 72px;
+  text-transform: lowercase;
 }
 
-ul {
-  list-style: none;
-
-  li {
-    padding: 1rem 2rem;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-  }
+section {
+  &:not(:last-child) {
+    margin-bottom: 50px
 }
-
-button {
-  padding: 1rem 1.5rem;
-  border: none;
 }

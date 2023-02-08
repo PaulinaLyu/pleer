@@ -1,13 +1,14 @@
-import * as React from 'react'
+import React from "react";
+import ButtonGroup from "./component/ButtonGroup/ButtonGroup";
+import VolumeSlider from "./component/VolumeSlider/VolumeSlider";
+import "./App.scss";
 
 export function App() {
-  const [count, setCount] = React.useState(0)
-
   return (
-    <>
-      <h1>Hello React + Webpack</h1>
-      <h3>Count!: {count}</h3>
-      <button onClick={() => setCount((prev) => prev + 1)}>Increment</button>
-    </>
-  )
+    <div className="app__container">
+      <h1>Weather sounds</h1>
+      <ButtonGroup />
+      <VolumeSlider />
+    </div>
+  );
 }
