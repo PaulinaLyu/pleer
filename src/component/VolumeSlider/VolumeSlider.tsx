@@ -1,8 +1,12 @@
 import React, { ChangeEvent, useCallback, useEffect, useRef, useState } from "react";
 import "./VolumeSlider.scss";
 
-const VolumeSlider = () => {
-  const [volume, setVolume] = useState(1);
+interface VolumeSliderProps {
+  volume: number;
+  setVolume: (value: number) => void;
+}
+
+const VolumeSlider = ({ volume, setVolume }: VolumeSliderProps) => {
   const [muted, setMuted] = useState(false);
   const rangeRef = useRef<HTMLDivElement>(null);
 

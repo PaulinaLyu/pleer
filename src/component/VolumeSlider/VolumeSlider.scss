@@ -20,8 +20,8 @@
   
     &::-webkit-slider-thumb {
       cursor: pointer;
-      height: 24px;
-      width: 24px;
+      height: 20px;
+      width: 20px;
       margin-top: 4px;
       pointer-events: all;
       position: relative;
@@ -37,8 +37,8 @@
   
     &::-moz-range-thumb {
       cursor: pointer;
-      height: 24px;
-      width: 24px;
+      height: 20px;
+      width: 20px;
       margin-top: 4px;
       pointer-events: all;
       position: relative;
@@ -51,18 +51,15 @@
       }
     }
   
-    &__left {
-      z-index: 10;
-    }
-  
     &__right {
       z-index: 10;
+      top: 12px;
     }
   }
 
 .double-range-slider {
     display: flex;
-    width: 10%;
+    width: 20%;
     height: 14px;
     flex-direction: column;
     align-items: center;
@@ -90,7 +87,6 @@
   
       &__range {
         background-color: #fff;
-        border-radius: 10 0;
         z-index: 2;
         height: 14px;
       }

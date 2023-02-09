@@ -1,20 +1,23 @@
 export default [
   {
     id: 1,
-    title: "Item 1",
-    src: "sunny-day.jpg",
-    svg: "",
+    title: "Sun music",
+    img: "images/sunny-day.jpg",
+    svg: "icons/sun.svg",
+    sound: "sounds/summer.mp3",
   },
   {
     id: 2,
-    title: "Item 2",
-    src: "water.jpg",
-    svg: "",
+    title: "Rain music",
+    img: "images/rain.jpg",
+    svg: "icons/rain.svg",
+    sound: "sounds/rain.mp3",
   },
   {
     id: 3,
-    title: "Item 3",
-    src: "snow.jpg",
-    svg: "",
+    title: "Snow music",
+    img: "images/snow.jpg",
+    svg: "icons/snow.svg",
+    sound: "sounds/winter.mp3",
   },
 ];

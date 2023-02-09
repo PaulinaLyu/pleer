@@ -1,6 +1,7 @@
 .button__container {
     width: 200px;
     height: 200px;
+    position: relative;
     border-radius: 10px;
     background-size: contain;
 
@@ -8,11 +9,6 @@
     &:not(:last-child) {
         margin-right: 90px
     }
-
-    // &:hover {
-    //     border: 4px solid #FFFFFF;
-    //     border-radius: 10px;
-    // }
 
     .button__img {
         background-size: contain;
@@ -25,5 +21,14 @@
             border: 4px solid #FFFFFF;
             border-radius: 10px;
         }
+    }
+
+    .button__svg {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        margin-right: -50%;
+        transform: translate(-50%, -50%)
     }
 }
