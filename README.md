@@ -4,5 +4,5 @@
     npm run build - собирает build для режима production
     npm run build:dev - собирает build для режима development
 
-    ветка js - приложение на vanila js
+    ветка js, master - приложение на vanila js
     ветка react - приложение с использованием библиотеки React
