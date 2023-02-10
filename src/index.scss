@@ -21,10 +21,17 @@ h1 {
   margin-bottom: 5rem;
   font-size: 72px;
   text-transform: lowercase;
+  z-index: 1;
 }
 
 section {
   &:not(:last-child) {
-    margin-bottom: 50px
+    margin-bottom: 50px;
+  }
 }
+
+button {
+  outline: 0;
+  border: 0;
+  background-color: transparent;
 }

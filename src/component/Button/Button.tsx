@@ -1,56 +1,69 @@
 import React, { useEffect, useRef, useState } from "react";
 import "./Button.scss";
-import ReactLogo from "../../../public/icons/file.svg";
-// import defaultExport, { ReactComponent as TestComponent } from "./rain.svg";
 
 interface ButtonProps {
   img: string;
-  svg?: string;
+  svg: string;
   title: string;
   sound: string;
   volume: number;
   id: number;
-  setCurrentTrack: (value: number) => void;
+  setCurrentTrack: React.Dispatch<React.SetStateAction<number>>;
   currentTrack: number;
+  muted: boolean;
+  code: string;
+  setBg: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Button = ({ img, svg, title, sound, volume, id, setCurrentTrack, currentTrack }: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const [isActive, setActive] = useState(false);
+  const {
+    img,
+    svg,
+    title,
+    code,
+    sound,
+    volume,
+    id,
+    setCurrentTrack,
+    currentTrack,
+    muted,
+    setBg,
+  } = props;
 
   const audioElement: React.MutableRefObject<HTMLAudioElement> = useRef();
 
   const toggleActive = () => {
     setActive(!isActive);
     if (!isActive) {
-      console.log("Play");
       setCurrentTrack(id);
-      debugger;
       audioElement.current?.play();
+      setBg(code);
     } else {
       audioElement.current?.pause();
-      debugger;
     }
   };
 
   useEffect(() => {
-    console.log(volume);
-    debugger;
     audioElement.current.volume = volume / 100;
   }, [volume]);
 
   useEffect(() => {
+    audioElement.current.muted = muted;
+  }, [muted]);
+
+  useEffect(() => {
     if (currentTrack !== id) {
-      debugger;
       audioElement.current?.pause();
     }
   }, [currentTrack]);
 
   return (
     <button className="button__container" onClick={toggleActive}>
+      <div className="button__container__wrapper"></div>
       <img className="button__img" src={img} alt={title} />
       <audio ref={audioElement} src={sound}></audio>
-      <img className="button__svg" src={svg} alt={`${title} svg`} />
-      {/* <ReactLogo /> */}
+      <img className="button__svg" src={svg} />
     </button>
   );
 };

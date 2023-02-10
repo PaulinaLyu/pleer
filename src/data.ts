@@ -1,6 +1,7 @@
 export default [
   {
     id: 1,
+    code: "sun",
     title: "Sun music",
     img: "images/sunny-day.jpg",
     svg: "icons/sun.svg",
@@ -8,6 +9,7 @@ export default [
   },
   {
     id: 2,
+    code: "rain",
     title: "Rain music",
     img: "images/rain.jpg",
     svg: "icons/rain.svg",
@@ -15,6 +17,7 @@ export default [
   },
   {
     id: 3,
+    code: "snow",
     title: "Snow music",
     img: "images/snow.jpg",
     svg: "icons/snow.svg",

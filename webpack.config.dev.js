@@ -5,7 +5,7 @@ module.exports = merge(commonConfig(), {
   mode: "development",
   devtool: "inline-source-map",
   devServer: {
-    port: 5000,
+    port: 3000,
     open: true,
     hot: true,
     watchFiles: "./",

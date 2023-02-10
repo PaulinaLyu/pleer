@@ -6,9 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = () => {
   const dist = "dist";
-  const filename = (env) => {
-    return `[name].[contenthash].${env}`;
-  };
   const plugins = () => {
     return [
       new HtmlWebpackPlugin({
@@ -22,15 +19,15 @@ module.exports = () => {
           },
           {
             from: path.resolve(__dirname, "public", "images"),
-            to: path.resolve(__dirname, "images", dist),
+            to: path.resolve(__dirname, dist, "images"),
           },
           {
             from: path.resolve(__dirname, "public", "icons"),
-            to: path.resolve(__dirname, "icons", dist),
+            to: path.resolve(__dirname, dist, "icons"),
           },
           {
             from: path.resolve(__dirname, "public", "sounds"),
-            to: path.resolve(__dirname, "sounds", dist),
+            to: path.resolve(__dirname, dist, "sounds"),
           },
         ],
       }),
@@ -85,26 +82,10 @@ module.exports = () => {
           test: /\.mp3$/i,
           type: "asset/resource",
         },
-        // {
-        //   test: /\.mp3$/i,
-        //   use: [
-        //     {
-        //       loader: "file-loader",
-        //     },
-        //   ],
-        // },
         {
           test: /\.svg$/,
-          type: "asset/inline",
+          type: "asset/resource",
         },
-        {
-          test: /\.svg$/,
-          use: ["@svgr/webpack", "url-loader"],
-        },
-        // {
-        //   test: /\.(png|jp(e*)g|svg|gif)$/,
-        //   type: "asset/resource",
-        // },
       ],
     },
   };
