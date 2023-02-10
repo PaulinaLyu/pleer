@@ -1,5 +1,6 @@
 import "./index.scss";
 
+// eslint-disable-next-line
 let volume = 50;
 let mode = "sun";
 let muted = false;
@@ -39,19 +40,19 @@ const setVolume = (volume) => {
   rainAudioElem.volume = volume / 100;
 };
 
-const handleMuteBtnClick = function () {
+const handleMuteBtnClick = () => {
   muted = !muted;
   const svg = muted ? "icons/muted.svg" : "icons/volume.svg";
   muteOrUnmuteAudio(svg, muted);
 };
 
-const handleSliderInputClick = function (event) {
+const handleSliderInputClick = (event) => {
   volume = event.target.valueAsNumber;
   sliderRange.style.width = `${event.target.valueAsNumber}%`;
   setVolume(event.target.valueAsNumber);
 };
 
-const handleSunBtnClick = function () {
+const handleSunBtnClick = () => {
   isSunBtnActive = !isSunBtnActive;
 
   if (isSunBtnActive) {
@@ -69,7 +70,7 @@ const handleSunBtnClick = function () {
   }
 };
 
-const handleRainBtnClick = function () {
+const handleRainBtnClick = () => {
   isRainBtnActive = !isRainBtnActive;
   if (isRainBtnActive) {
     if (mode === "sun") {
@@ -86,7 +87,7 @@ const handleRainBtnClick = function () {
   }
 };
 
-const handleSnowBtnClick = function () {
+const handleSnowBtnClick = () => {
   isSnowBtnActive = !isSnowBtnActive;
   if (isSnowBtnActive) {
     if (mode === "sun") {
