@@ -1,0 +1,12 @@
+.button-group__container {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 900px) {
+  .button-group__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+}

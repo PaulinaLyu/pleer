@@ -37,23 +37,18 @@ module.exports = () => {
   };
   return {
     context: path.resolve(__dirname, "src"),
-    entry: { main: path.resolve(__dirname, "src", "index.tsx") },
+    entry: { main: path.resolve(__dirname, "src", "index.js") },
     output: {
       path: path.resolve(__dirname, "dist"),
       filename: `[name].[contenthash].bundle.js`,
       clean: true,
     },
     resolve: {
-      extensions: [".tsx", ".ts", ".js", ".jsx"],
+      extensions: [".js"],
     },
     plugins: plugins(),
     module: {
       rules: [
-        {
-          test: /\.[tj]sx?$/,
-          use: "ts-loader",
-          exclude: /node_modules/,
-        },
         {
           test: /\.css$/i,
           use: [MiniCssExtractPlugin.loader, "css-loader"],

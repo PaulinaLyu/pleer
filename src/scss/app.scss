@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 
   &--sun {
     background-image: url("../public/images/sunny-day.jpg");
@@ -47,8 +48,18 @@
   }
 }
 
-.h1__icon {
-  margin-left: 10px;
-  margin-right: 10px;
-  margin-bottom: -10px;
+.app__title {
+  .app__title__icon {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: -10px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .app__title {
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+  }
 }
