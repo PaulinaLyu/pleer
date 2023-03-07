@@ -10,29 +10,10 @@
   justify-content: center;
   align-items: center;
   overflow: hidden;
-
-  &--sun {
-    background-image: url("../public/images/sunny-day.jpg");
-    background-color: rgba(0, 0, 0, 0.35);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  &--snow {
-    background-image: url("../public/images/snow.jpg");
-    background-color: rgba(0, 0, 0, 0.35);
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
-
-  &--rain {
-    background-image: url("../public/images/rain.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-  }
+  background-color: rgba(0, 0, 0, 0.35);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 
   .app__container__wrapper {
     position: absolute;
