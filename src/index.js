@@ -1,38 +1,67 @@
 import data from "./data.js";
+import volumeIcon from "./assets/icons/volume.svg";
+import mutedIcon from "./assets/icons/muted.svg";
 import summerBg from "./assets/images/sunny-bg.jpg";
+import sunIcon from "./assets/icons/sun.svg";
 import "./index.scss";
 
 const btnGroupContainer = document.getElementById("btns-container-id");
+const sliderInput = document.getElementById("slider-input");
+const sliderRange = document.getElementById("slider-range");
+const muteIcon = document.getElementById("mute-icon-id");
+const muteBtn = document.getElementById("mute-btn");
 const app = document.getElementById("app-id");
+const appTitleIcon = document.getElementById("app-title-icon-id");
+
+appTitleIcon.src = sunIcon;
+muteIcon.src = volumeIcon;
+muteIcon.dataset.code = "volume";
 app.style.backgroundImage = `url('${summerBg}')`;
+
 let playingMusicId;
 const audioObj = new Audio();
 
-// const resetPrevMode = (newMode, prevMode, audioElem, isActive) => {
-//   app.classList.remove(`app__container--${prevMode}`);
-//   app.classList.add(`app__container--${newMode}`);
-//   audioElem.pause();
-//   isActive = false;
-// };
+const handleSliderInputClick = (event) => {
+  sliderRange.style.width = `${event.target.valueAsNumber}%`;
+  audioObj.volume = event.currentTarget.value / 100;
+};
 
-// const muteOrUnmuteAudio = (svgPath, muted) => {
-//   muteIcon.src = svgPath;
-//   sunAudioElem.muted = muted;
-//   snowAudioElem.muted = muted;
-//   rainAudioElem.muted = muted;
-// };
+const handleMuteBtnClick = ({ target }) => {
+  if (target.dataset.code === "volume") {
+    muteIcon.src = mutedIcon;
+    muteIcon.dataset.code = "mute";
+    audioObj.muted = true;
+  } else {
+    muteIcon.src = volumeIcon;
+    muteIcon.dataset.code = "volume";
+    audioObj.muted = true;
+  }
+};
 
-// const setVolume = (volume) => {
-//   sunAudioElem.volume = volume / 100;
-//   snowAudioElem.volume = volume / 100;
-//   rainAudioElem.volume = volume / 100;
-// };
+const handleBtnGroupContainer = ({ target }) => {
+  const targetId = target.closest("[data-item-id]")?.dataset.itemId;
+  if (!targetId) return;
+  const item = data.find((i) => i.id === targetId);
+  if (!item) return;
+  if (playingMusicId !== item.id) {
+    playingMusicId = item.id;
+    audioObj.src = item.sound;
+    audioObj.play();
+    app.style.backgroundImage = `url('${item.background}')`;
+    return;
+  }
+
+  if (audioObj.paused) {
+    audioObj.play();
+  } else {
+    audioObj.pause();
+  }
+};
 
 data.forEach((item) => {
   const btn = document.createElement("button");
   const div = document.createElement("div");
   const img = document.createElement("img");
-  const audio = document.createElement("audio");
   const icon = document.createElement("img");
 
   btn.classList.add("button__container");
@@ -42,41 +71,17 @@ data.forEach((item) => {
 
   btn.dataset.itemId = item.id;
   img.src = item.background;
-  audio.src = item.sound;
   icon.src = item.icon;
 
   btn.append(div);
   btn.append(img);
-  btn.append(audio);
   btn.append(icon);
   btnGroupContainer.append(btn);
 });
 
-btnGroupContainer.addEventListener("click", ({ target }) => {
-  console.log(target);
-  debugger;
-  const targetId = target.closest("[data-item-id]")?.dataset.itemId;
-  if (!targetId) return;
-  debugger;
-  const item = data.find((i) => i.id === targetId);
-  if (!item) return;
-  debugger;
-  if (playingMusicId !== item.id) {
-    playingMusicId = item.id;
-    audioObj.src = item.sound;
-    audioObj.play();
-    app.style.backgroundImage = `url('${item.background}')`;
-    return;
-  }
-  debugger;
-
-  if (audioObj.paused) {
-    audioObj.play();
-    debugger;
-  } else {
-    audioObj.pause();
-  }
-});
+btnGroupContainer.addEventListener("click", handleBtnGroupContainer);
+sliderInput.addEventListener("input", handleSliderInputClick);
+muteBtn.addEventListener("click", handleMuteBtnClick);
 
 // <div class="button__container__wrapper"></div>
 // <img class="button__img" src="images/sunny-day.jpg" alt="Sun music" />

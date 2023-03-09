@@ -17,18 +17,6 @@ module.exports = () => {
             from: path.resolve(__dirname, "public", "favicon.png"),
             to: path.resolve(__dirname, dist),
           },
-          // {
-          //   from: path.resolve(__dirname, "assets", "images"),
-          //   to: path.resolve(__dirname, dist, "images"),
-          // },
-          // {
-          //   from: path.resolve(__dirname, "assets", "icons"),
-          //   to: path.resolve(__dirname, dist, "icons"),
-          // },
-          // {
-          //   from: path.resolve(__dirname, "assets", "sounds"),
-          //   to: path.resolve(__dirname, dist, "sounds"),
-          // },
         ],
       }),
       new MiniCssExtractPlugin(),
@@ -44,11 +32,6 @@ module.exports = () => {
       path: path.resolve(__dirname, "dist"),
       clean: true,
     },
-    // output: {
-    //   path: path.resolve(__dirname, "dist"),
-    //   filename: `[name].[contenthash].bundle.js`,
-    //   clean: true,
-    // },
     resolve: {
       extensions: [".js"],
     },
