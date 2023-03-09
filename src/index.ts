@@ -1,4 +1,5 @@
-import data from "./data.js";
+import { dataItem } from "data";
+import data from "./data";
 import volumeIcon from "./assets/icons/volume.svg";
 import mutedIcon from "./assets/icons/muted.svg";
 import summerBg from "./assets/images/sunny-bg.jpg";
@@ -6,27 +7,35 @@ import sunIcon from "./assets/icons/sun.svg";
 import "./index.scss";
 
 const btnGroupContainer = document.getElementById("btns-container-id");
-const sliderInput = document.getElementById("slider-input");
-const sliderRange = document.getElementById("slider-range");
-const muteIcon = document.getElementById("mute-icon-id");
-const muteBtn = document.getElementById("mute-btn");
+const sliderInput = document.getElementById("slider-input-id") as HTMLInputElement;
+const sliderRange = document.getElementById("slider-range-id");
+const muteIcon = document.getElementById("mute-icon-id") as HTMLImageElement;
+const muteBtn = document.getElementById("mute-btn-id") as HTMLButtonElement;
 const app = document.getElementById("app-id");
-const appTitleIcon = document.getElementById("app-title-icon-id");
+const appTitleIcon = document.getElementById("app-title-icon-id") as HTMLImageElement;
 
 appTitleIcon.src = sunIcon;
 muteIcon.src = volumeIcon;
 muteIcon.dataset.code = "volume";
 app.style.backgroundImage = `url('${summerBg}')`;
 
-let playingMusicId;
+let playingMusicId: string;
 const audioObj = new Audio();
 
-const handleSliderInputClick = (event) => {
-  sliderRange.style.width = `${event.target.valueAsNumber}%`;
-  audioObj.volume = event.currentTarget.value / 100;
+const handleSliderInputClick = ({
+  target,
+}: Event & {
+  target: HTMLInputElement;
+}) => {
+  sliderRange.style.width = `${target.valueAsNumber}%`;
+  audioObj.volume = target.valueAsNumber / 100;
 };
 
-const handleMuteBtnClick = ({ target }) => {
+const handleMuteBtnClick = ({
+  target,
+}: Event & {
+  target: HTMLButtonElement;
+}) => {
   if (target.dataset.code === "volume") {
     muteIcon.src = mutedIcon;
     muteIcon.dataset.code = "mute";
@@ -34,14 +43,22 @@ const handleMuteBtnClick = ({ target }) => {
   } else {
     muteIcon.src = volumeIcon;
     muteIcon.dataset.code = "volume";
-    audioObj.muted = true;
+    audioObj.muted = false;
   }
 };
 
-const handleBtnGroupContainer = ({ target }) => {
-  const targetId = target.closest("[data-item-id]")?.dataset.itemId;
+const handleBtnGroupContainer = ({
+  target,
+}: Event & {
+  target: HTMLElement;
+}) => {
+  const targetClosest = target.closest("[data-item-id]");
+  let targetId: string;
+  if (targetClosest instanceof HTMLElement) {
+    targetId = targetClosest?.dataset.itemId;
+  }
   if (!targetId) return;
-  const item = data.find((i) => i.id === targetId);
+  const item: dataItem = data.find((i) => i.id === targetId);
   if (!item) return;
   if (playingMusicId !== item.id) {
     playingMusicId = item.id;
@@ -58,7 +75,7 @@ const handleBtnGroupContainer = ({ target }) => {
   }
 };
 
-data.forEach((item) => {
+data.forEach((item: dataItem) => {
   const btn = document.createElement("button");
   const div = document.createElement("div");
   const img = document.createElement("img");

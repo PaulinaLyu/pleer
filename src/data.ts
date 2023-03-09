@@ -8,6 +8,13 @@ import summerSound from "./assets/sounds/summer.mp3";
 import rainSound from "./assets/sounds/rain.mp3";
 import winterSound from "./assets/sounds/winter.mp3";
 
+export interface dataItem {
+  id: string;
+  icon: string;
+  background: string;
+  sound: string;
+}
+
 export default [
   {
     id: "14e7f2566",
@@ -27,4 +34,4 @@ export default [
     background: winterBg,
     sound: winterSound,
   },
-];
+] as dataItem[];
